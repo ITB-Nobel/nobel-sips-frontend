@@ -16,6 +16,9 @@ module.exports = {
       },
     },
     extend: {
+      colors: {
+        'primary': '#be123c'
+      },
       keyframes: {
         "accordion-down": {
           from: { height: 0 },
@@ -30,6 +33,7 @@ module.exports = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+
     },
   },
   plugins: [require("tailwindcss-animate")],
