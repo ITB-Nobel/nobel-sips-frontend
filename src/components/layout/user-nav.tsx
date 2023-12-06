@@ -6,6 +6,7 @@ import {
   DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
 import {Button} from "@/components/ui/button";
+import Link from "next/link";
 // import {Avatar, AvatarFallback, AvatarImage} from "@radix-ui/react-avatar";
 
 
@@ -31,19 +32,23 @@ export function UserNav() {
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem>
-            Profile
-            <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            Billing
-            <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            Settings
-            <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
-          </DropdownMenuItem>
-          <DropdownMenuItem>New Team</DropdownMenuItem>
+          {/*<DropdownMenuItem>*/}
+          {/*  Profile*/}
+          {/*  <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>*/}
+          {/*</DropdownMenuItem>*/}
+          {/*<DropdownMenuItem>*/}
+          {/*  Billing*/}
+          {/*  <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>*/}
+          {/*</DropdownMenuItem>*/}
+          <Link href={"/dashboard/setting"}>
+            <DropdownMenuItem>
+              Settings
+              <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
+            </DropdownMenuItem>
+          </Link>
+
+
+          {/*<DropdownMenuItem>New Team</DropdownMenuItem>*/}
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuItem>

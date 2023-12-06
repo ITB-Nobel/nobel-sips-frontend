@@ -11,6 +11,7 @@ import {
     NavigationMenuTrigger, navigationMenuTriggerStyle
 } from "@/components/ui/navigation-menu";
 import React from "react";
+import Image from "next/image";
 
 export function MainNav({
                             className,
@@ -21,6 +22,13 @@ export function MainNav({
             className={cn("flex items-center space-x-4 lg:space-x-6", className)}
             {...props}
         >
+            <Image
+                src="/examples/authentication-light.png"
+                width={100}
+                height={20}
+                alt="Authentication"
+                className="block dark:hidden"
+            />
             <Link
                 href="/dashboard"
                 className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
@@ -28,7 +36,7 @@ export function MainNav({
                 Dashboard
             </Link>
             <Link
-                href="/table"
+                href="/dashboard/table"
                 className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
             >
                 Master Data
