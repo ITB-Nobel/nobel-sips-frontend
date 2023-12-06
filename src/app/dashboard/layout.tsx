@@ -2,7 +2,8 @@ import Image from "next/image";
 import {MainNav} from "@/components/layout/main-nav";
 import {UserNav} from "@/components/layout/user-nav";
 
-const DashboardLayout = ({children}: { children: React.ReactNode }) => {
+
+export default function Layout({children}: { children: React.ReactNode }){
     return <>
         <div className="md:hidden">
             <Image
@@ -36,5 +37,3 @@ const DashboardLayout = ({children}: { children: React.ReactNode }) => {
 
     </>
 }
-
-export default DashboardLayout

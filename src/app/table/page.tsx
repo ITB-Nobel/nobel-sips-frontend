@@ -1,11 +1,5 @@
-import {Metadata} from "next"
-import Image from "next/image"
-
 import {columns} from "./components/columns"
 import {DataTable} from "./components/data-table"
-import {UserNav} from "./components/user-nav"
-import DashboardLayout from "@/components/layout/dashboard-layout";
-
 
 
 // Simulate a database read for tasks.
@@ -23,7 +17,7 @@ export default async function TaskPage() {
     const tasks: any[] = []//await getTasks()
 
     return (
-        <DashboardLayout>
+        <>
             {/*<div className="md:hidden">*/}
             {/*    <Image*/}
             {/*        src="/examples/tasks-light.png"*/}
@@ -54,6 +48,6 @@ export default async function TaskPage() {
                 </div>
                 <DataTable data={tasks} columns={columns}/>
             </div>
-        </DashboardLayout>
+        </>
     )
 }
