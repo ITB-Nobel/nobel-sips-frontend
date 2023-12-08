@@ -35,23 +35,23 @@ export function MainNav({
             >
                 Dashboard
             </Link>
-            <Link
-                href="/dashboard/table"
-                className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-            >
-                Master Data
-            </Link>
+            {/*<Link*/}
+            {/*    href="/dashboard/table"*/}
+            {/*    className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"*/}
+            {/*>*/}
+            {/*    Master Data*/}
+            {/*</Link>*/}
 
             <NavigationMenuDemo/>
 
             <Link
-                href="/events"
+                href="/dashboard/events"
                 className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
             >
                 Events
             </Link>
             <Link
-                href="/website"
+                href="/dashboard/website"
                 className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
             >
                 Website
@@ -94,12 +94,12 @@ export function NavigationMenuDemo() {
         <NavigationMenu>
             <NavigationMenuList>
                 <NavigationMenuItem>
-                    <NavigationMenuTrigger className={"bg-black text-white"}>About us</NavigationMenuTrigger>
+                    <NavigationMenuTrigger className={"bg-black text-white"}>Master Data</NavigationMenuTrigger>
                     <NavigationMenuContent>
                         <ul className="grid gap-3 p-4 w-[200px]">
-                            <ListItem href="/docs" title="Introduction"/>
-                            <ListItem href="/docs/installation" title="Installation"/>
-                            <ListItem href="/docs/primitives/typography" title="Typography"/>
+                            <ListItem href="/docs" title="Staff"/>
+                            <ListItem href="/docs/installation" title="School"/>
+                            <ListItem href="/docs/primitives/typography" title="Country"/>
                         </ul>
                     </NavigationMenuContent>
                 </NavigationMenuItem>
