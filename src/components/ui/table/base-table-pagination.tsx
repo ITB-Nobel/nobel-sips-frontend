@@ -4,13 +4,13 @@ import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/c
 import {Button} from "@/components/ui/button";
 
 
-interface DataTablePaginationProps<TData> {
+interface IBaseTablePagination<TData> {
     table: Table<TData>
 }
 
-export function DataTablePagination<TData>({
+export function BaseTablePagination<TData>({
                                                table,
-                                           }: DataTablePaginationProps<TData>) {
+                                           }: IBaseTablePagination<TData>) {
     return (
         <div className="flex items-center justify-between px-2">
             <div className="flex-1 text-sm text-muted-foreground">

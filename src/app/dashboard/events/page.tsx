@@ -1,18 +1,14 @@
-import ModalForm from "@/components/shared/modal-form";
-import EventsForm from "@/app/dashboard/events/events-form";
+import {EventsTable} from "@/app/dashboard/events/events-table";
+import {columns} from "@/app/dashboard/table/components/columns";
 
 export default function EventPage() {
 
-    return <div>
-
-        <ModalForm
-            title={"Hello World"}
-            description={"Test Description"}
-            buttonText={"Create"}
-            FormComponent={<EventsForm/>}
-            modalSize={"xl"}
+    return <div className={"py-12"}>
+        <h1 className={"mb-12 text-2xl font-medium"}>Events Page</h1>
+        <EventsTable
+            columns={columns}
+            data={[]}
         />
-
 
     </div>
 }

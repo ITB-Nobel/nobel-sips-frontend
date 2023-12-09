@@ -1,14 +1,23 @@
 "use client"
 
-import {ColumnDef} from "@tanstack/react-table"
+import {ColumnDef, Row} from "@tanstack/react-table"
 
 
 import {labels, priorities, statuses} from "../data/data"
-import {Task} from "../data/schema"
-import {DataTableColumnHeader} from "./data-table-column-header"
-import {DataTableRowActions} from "./data-table-row-actions"
+import {Task, taskSchema} from "../data/schema"
+
 import {Checkbox} from "@/components/ui/checkbox";
 import {Badge} from "@/components/ui/badge";
+import {BaseTableColumnHeader} from "@/components/ui/table/base-table-column-header";
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem, DropdownMenuRadioGroup, DropdownMenuRadioItem,
+    DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuSub, DropdownMenuSubContent, DropdownMenuSubTrigger,
+    DropdownMenuTrigger
+} from "@/components/ui/dropdown-menu";
+import {Button} from "@/components/ui/button";
+import {DotsHorizontalIcon} from "@radix-ui/react-icons";
 
 export const columns: ColumnDef<Task>[] = [
     {
@@ -38,7 +47,7 @@ export const columns: ColumnDef<Task>[] = [
     {
         accessorKey: "id",
         header: ({column}) => (
-            <DataTableColumnHeader column={column} title="Task"/>
+            <BaseTableColumnHeader column={column} title="Task"/>
         ),
         cell: ({row}) => <div className="w-[80px]">{row.getValue("id")}</div>,
         enableSorting: false,
@@ -47,7 +56,7 @@ export const columns: ColumnDef<Task>[] = [
     {
         accessorKey: "title",
         header: ({column}) => (
-            <DataTableColumnHeader column={column} title="Title"/>
+            <BaseTableColumnHeader column={column} title="Title"/>
         ),
         cell: ({row}) => {
             const label = labels.find((label) => label.value === row.original.label)
@@ -65,7 +74,7 @@ export const columns: ColumnDef<Task>[] = [
     {
         accessorKey: "status",
         header: ({column}) => (
-            <DataTableColumnHeader column={column} title="Status"/>
+            <BaseTableColumnHeader column={column} title="Status"/>
         ),
         cell: ({row}) => {
             const status = statuses.find(
@@ -92,7 +101,7 @@ export const columns: ColumnDef<Task>[] = [
     {
         accessorKey: "priority",
         header: ({column}) => (
-            <DataTableColumnHeader column={column} title="Priority"/>
+            <BaseTableColumnHeader column={column} title="Priority"/>
         ),
         cell: ({row}) => {
             const priority = priorities.find(
@@ -118,6 +127,56 @@ export const columns: ColumnDef<Task>[] = [
     },
     {
         id: "actions",
-        cell: ({row}) => <DataTableRowActions row={row}/>,
+        cell: ({row}) => <BaseTableRowActions row={row}/>,
     },
 ]
+
+
+
+interface DataTableRowActionsProps<TData> {
+    row: Row<TData>
+}
+
+export function BaseTableRowActions<TData>({
+                                               row,
+                                           }: DataTableRowActionsProps<TData>) {
+    const task = taskSchema.parse(row.original)
+
+    return (
+        // eslint-disable-next-line react/jsx-no-undef
+        <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+                <Button
+                    variant="ghost"
+                    className="flex h-8 w-8 p-0 data-[state=open]:bg-muted"
+                >
+                    <DotsHorizontalIcon className="h-4 w-4"/>
+                    <span className="sr-only">Open menu</span>
+                </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-[160px]">
+                <DropdownMenuItem>Edit</DropdownMenuItem>
+                <DropdownMenuItem>Make a copy</DropdownMenuItem>
+                <DropdownMenuItem>Favorite</DropdownMenuItem>
+                <DropdownMenuSeparator/>
+                <DropdownMenuSub>
+                    <DropdownMenuSubTrigger>Labels</DropdownMenuSubTrigger>
+                    <DropdownMenuSubContent>
+                        <DropdownMenuRadioGroup value={task.label}>
+                            {labels.map((label) => (
+                                <DropdownMenuRadioItem key={label.value} value={label.value}>
+                                    {label.label}
+                                </DropdownMenuRadioItem>
+                            ))}
+                        </DropdownMenuRadioGroup>
+                    </DropdownMenuSubContent>
+                </DropdownMenuSub>
+                <DropdownMenuSeparator/>
+                <DropdownMenuItem>
+                    Delete
+                    <DropdownMenuShortcut>⌘⌫</DropdownMenuShortcut>
+                </DropdownMenuItem>
+            </DropdownMenuContent>
+        </DropdownMenu>
+    )
+}

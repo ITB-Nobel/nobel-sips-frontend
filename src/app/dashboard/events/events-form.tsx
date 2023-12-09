@@ -4,12 +4,10 @@ import {handleCreate} from "@/lib/action";
 import {Label} from "@/components/ui/label";
 import {Input} from "@/components/ui/input";
 import {SheetClose, SheetFooter} from "@/components/ui/sheet";
-import SubmitButton from "@/components/shared/submit-button";
 import {useForm} from "react-hook-form";
-
-
+import SubmitButton from "@/components/ui/submit-button";
 export default function EventsForm() {
-    const {register,control} = useForm({
+    const {register, control} = useForm({
         defaultValues: {
             name: 'anton',
             username: 'bani'
