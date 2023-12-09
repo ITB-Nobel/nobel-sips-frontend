@@ -10,6 +10,7 @@ export default function EventPage() {
             description={"Test Description"}
             buttonText={"Create"}
             FormComponent={<EventsForm/>}
+            modalSize={"xl"}
         />
 
 
