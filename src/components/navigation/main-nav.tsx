@@ -21,13 +21,17 @@ export function MainNav({
                             ...props
                         }: React.HTMLAttributes<HTMLElement>) {
     const pathname = usePathname()
+
+    const styles = {
+        linkStyle: "flex-icon text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+    }
     return (
         <nav
             className={cn("flex items-center space-x-16", className)}
             {...props}
         >
             <Image
-                src="vercel.svg"
+                src="/logo.png"
                 width={100}
                 height={30}
                 alt="Authentication"
@@ -36,7 +40,7 @@ export function MainNav({
             <div className={"flex space-x-8 items-center"}>
                 <Link
                     href="/dashboard"
-                    className={"flex-icon text-sm font-medium text-muted-foreground transition-colors hover:text-primary"}>
+                    className={cn(styles.linkStyle, `${pathname === "/dashboard" ? "active" : ""}`)}>
                     <DashboardIcon/>
                     Dashboard
                 </Link>
@@ -46,19 +50,19 @@ export function MainNav({
 
                 <Link
                     href="/dashboard/surat-masuk"
-                    className="flex-icon text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
+                    className={cn(styles.linkStyle, `${pathname === "/dashboard/surat-masuk" ? "active" : ""}`)}>
                     <EnvelopeOpenIcon/>
                     Surat Masuk
                 </Link>
                 <Link
                     href="/dashboard/surat-keluar"
-                    className="flex-icon text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
+                    className={cn(styles.linkStyle, `${pathname === "/dashboard/surat-keluar" ? "active" : ""}`)}>
                     <EnvelopeClosedIcon/>
                     Surat Keluar
                 </Link>
                 <Link
                     href="/dashboard/disposisi"
-                    className="flex-icon text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
+                    className={cn(styles.linkStyle, `${pathname === "/dashboard/disposisi" ? "active" : ""}`)}>
                     <PaperPlaneIcon/>
                     Disposisi
                 </Link>
@@ -107,7 +111,7 @@ export function NavigationMenuDemo() {
                         Master Data
                     </NavigationMenuTrigger>
                     <NavigationMenuContent>
-                        <ul className="grid gap-3 p-4 w-[200px]">
+                        <ul className="grid gap-1 px-4 py-2 w-[200px]">
                             <ListItem href="/docs" title="User"/>
                             <ListItem href="/docs/installation" title="Departemen"/>
                             {/*<ListItem href="/docs/primitives/typography" title="Country"/>*/}
