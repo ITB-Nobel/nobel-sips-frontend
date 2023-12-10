@@ -114,7 +114,9 @@ export function NavigationMenuDemo() {
                         <ul className="grid gap-1 px-4 py-2 w-[200px]">
                             <ListItem href="/docs" title="User"/>
                             <ListItem href="/docs/installation" title="Departemen"/>
-                            {/*<ListItem href="/docs/primitives/typography" title="Country"/>*/}
+                            <ListItem href="/docs/primitives/typography" title="Klasifikasi Surat"/>
+                            <ListItem href="/docs/primitives/typography" title="Unit Kerja"/>
+                            <ListItem href="/docs/primitives/typography" title="Layout Surat"/>
                         </ul>
                     </NavigationMenuContent>
                 </NavigationMenuItem>
