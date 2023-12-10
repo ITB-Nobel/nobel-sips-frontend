@@ -2,9 +2,10 @@ import {Metadata} from "next"
 import Link from "next/link"
 
 import {cn} from "@/lib/utils"
-import {UserAuthForm} from "@/app/auth/components/user-auth-form";
 import {buttonVariants} from "@/components/ui/button";
 import AuthLeftLayout from "@/app/auth/components/left-layout";
+import {ForgotPasswordForm} from "@/app/auth/forgot-password/forgot-password-form";
+import {ErrorTemplate} from "@/components/shared/error-template";
 
 export const metadata: Metadata = {
     title: "Forgot Password",
@@ -15,7 +16,7 @@ export default function ForgotPasswordPage() {
     return (
         <>
             <Link
-                href="/examples/authentication"
+                href="/auth/login"
                 className={cn(
                     buttonVariants({variant: "ghost"}),
                     "absolute right-4 top-4 md:right-8 md:top-8"
@@ -28,30 +29,13 @@ export default function ForgotPasswordPage() {
                 <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
                     <div className="flex flex-col space-y-2 text-center">
                         <h1 className="text-2xl font-semibold tracking-tight">
-                            Create an account
+                            Reset Password
                         </h1>
                         <p className="text-sm text-muted-foreground">
-                            Enter your email below to create your account
+                            Masukkan email yang telah teregistrasi di sistem
                         </p>
                     </div>
-                    <UserAuthForm/>
-                    <p className="px-8 text-center text-sm text-muted-foreground">
-                        By clicking continue, you agree to our{" "}
-                        <Link
-                            href="/terms"
-                            className="underline underline-offset-4 hover:text-primary"
-                        >
-                            Terms of Service
-                        </Link>{" "}
-                        and{" "}
-                        <Link
-                            href="/privacy"
-                            className="underline underline-offset-4 hover:text-primary"
-                        >
-                            Privacy Policy
-                        </Link>
-                        .
-                    </p>
+                    <ForgotPasswordForm/>
                 </div>
             </div>
         </>

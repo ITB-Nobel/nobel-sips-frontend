@@ -18,12 +18,6 @@ export default function RootLayout({
         <html lang="en">
             <body className={inter.className}>
             {children}
-            {/*<footer className={"w-full text-center bg-black text-white text-sm"}>*/}
-            {/*    <div className={"container"}>*/}
-            {/*        tes@mail.com*/}
-            {/*    </div>*/}
-
-            {/*</footer>*/}
             </body>
         </html>
     )
