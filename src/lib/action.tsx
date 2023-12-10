@@ -1,35 +1,34 @@
 'use server'
 
-export async function postAction<T>({url, payload}: { url: string, payload: T }) {
-    return new Promise((resolve) => {
-        setTimeout(() => resolve('berhasil'), 3000)
-    })
-}
+import {apiDelete, apiPost, apiPut} from "@/lib/api";
 
-
-export async function putAction<T>({url, payload}: { url: string, payload: T }) {
-
-}
-
-export async function deleteAction() {
-
-}
-
-
-export async function getAllAction() {
-
-}
-
-export async function getDetailAction() {
-
-}
-
-export async function filterAction({url, filter, search}: {
+type GeneralActionType<T> = {
     url: string,
-    filter?: object,
-    search?: string
-}) {
-    return new Promise((resolve) => {
-        setTimeout(() => resolve('berhasil'), 3000)
+    payload: T
+}
+
+export async function postAction<T>({url, payload}: GeneralActionType<T>) {
+    return new Promise((resolve, reject) => {
+        apiPost({url, payload})
+            .then(result => resolve(result))
+            .catch(error => reject(error))
     })
 }
+
+
+export async function putAction<T>({url, payload}: GeneralActionType<T>) {
+    return new Promise((resolve, reject) => {
+        apiPut({url, payload})
+            .then(result => resolve(result))
+            .catch(error => reject(error))
+    })
+}
+
+export async function deleteAction<T>({url}: Omit<GeneralActionType<T>, 'payload'>) {
+    return new Promise((resolve, reject) => {
+        apiDelete({url})
+            .then(result => resolve(result))
+            .catch(error => reject(error))
+    })
+}
+

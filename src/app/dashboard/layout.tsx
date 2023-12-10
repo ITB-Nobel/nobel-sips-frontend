@@ -15,7 +15,7 @@ export default function Layout({children}: { children: React.ReactNode }){
                 </div>
             </div>
         </div>
-        <div className={"container"}>
+        <div className={"container px-20 py-12"}>
             {children}
         </div>
 

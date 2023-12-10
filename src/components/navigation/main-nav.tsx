@@ -19,43 +19,36 @@ export function MainNav({
                         }: React.HTMLAttributes<HTMLElement>) {
     return (
         <nav
-            className={cn("flex items-center space-x-4 lg:space-x-6", className)}
+            className={cn("flex items-center space-x-16", className)}
             {...props}
         >
             <Image
-                src="/examples/authentication-light.png"
+                src="vercel.svg"
                 width={100}
-                height={20}
+                height={30}
                 alt="Authentication"
-                className="block dark:hidden"
+                className="block w-[100px] h-[30px]"
             />
-            <Link
-                href="/dashboard"
-                className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-            >
-                Dashboard
-            </Link>
-            {/*<Link*/}
-            {/*    href="/dashboard/table"*/}
-            {/*    className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"*/}
-            {/*>*/}
-            {/*    Master Data*/}
-            {/*</Link>*/}
+            <div className={"flex space-x-6 items-center"}>
+                <Link
+                    href="/dashboard"
+                    className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
+                    Dashboard
+                </Link>
 
-            <NavigationMenuDemo/>
+                <NavigationMenuDemo/>
+                <Link
+                    href="/dashboard/events"
+                    className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
+                    Events
+                </Link>
+                <Link
+                    href="/dashboard/website"
+                    className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
+                    Website
+                </Link>
+            </div>
 
-            <Link
-                href="/dashboard/events"
-                className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-            >
-                Events
-            </Link>
-            <Link
-                href="/dashboard/website"
-                className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-            >
-                Website
-            </Link>
         </nav>
     )
 }

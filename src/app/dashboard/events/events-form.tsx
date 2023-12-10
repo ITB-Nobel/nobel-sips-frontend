@@ -1,19 +1,23 @@
 'use client'
 
-import {handleCreate} from "@/lib/action";
+
 import {Label} from "@/components/ui/label";
 import {Input} from "@/components/ui/input";
 import {SheetClose, SheetFooter} from "@/components/ui/sheet";
 import {useForm} from "react-hook-form";
 import SubmitButton from "@/components/ui/submit-button";
+import {useState} from "react";
+import {postAction} from "@/lib/action";
+
 export default function EventsForm() {
+    const [loading, setLoading] = useState(false)
     const {register, control} = useForm({
         defaultValues: {
             name: 'anton',
             username: 'bani'
         }
     })
-    return <form action={(payload) => handleCreate({url: 'test', payload})}>
+    return <form action={(payload) => postAction({url: 'test', payload})}>
         <div className="grid gap-4 py-4">
             <div className="grid grid-cols-4 items-center gap-4">
                 <Label
@@ -39,7 +43,7 @@ export default function EventsForm() {
         </div>
         <SheetFooter>
             <SheetClose asChild>
-                <SubmitButton/>
+                <SubmitButton loading={loading}/>
             </SheetClose>
         </SheetFooter>
     </form>
