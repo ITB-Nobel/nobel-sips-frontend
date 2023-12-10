@@ -9,7 +9,7 @@ import SubmitButton from "@/components/ui/submit-button";
 import {useState} from "react";
 import {postAction} from "@/lib/action";
 
-export default function EventsForm() {
+export default function DisposisiForm() {
     const [loading, setLoading] = useState(false)
     const {register, control} = useForm({
         defaultValues: {

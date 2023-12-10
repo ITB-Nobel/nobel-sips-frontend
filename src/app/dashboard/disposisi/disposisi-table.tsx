@@ -7,12 +7,12 @@ import {BaseTableFacetedFilter} from "@/components/ui/table/base-table-faceted-f
 import {priorities, statuses} from "@/app/dashboard/table/data/data";
 import {BaseTableToolbar} from "@/components/ui/table/base-table-toolbar";
 import ModalForm from "@/components/ui/modal-form";
-import EventsForm from "@/app/dashboard/events/events-form";
+import SuratMasukForm from "@/app/dashboard/surat-masuk/surat-masuk-form";
 import useBaseTable, {IBaseTableProps} from "@/hooks/base-table-hooks";
 import {Task} from "@/app/dashboard/table/data/schema";
 
 
-export function EventsTable({
+export function DisposisiTable({
                                 columns,
                                 data,
                             }: IBaseTableProps<Task>) {
@@ -44,7 +44,7 @@ export function EventsTable({
                         title={"Hello World"}
                         description={"Test Description"}
                         buttonText={"Create"}
-                        FormComponent={<EventsForm/>}
+                        FormComponent={<SuratMasukForm/>}
                         modalSize={"sm"}
                     />}
             />

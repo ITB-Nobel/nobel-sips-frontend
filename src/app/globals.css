@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.flex-icon{
+    @apply flex gap-2 items-center
+}
+
+.active{
+    @apply text-primary
+}
+
+body{
+    @apply bg-zinc-50
+}

@@ -12,11 +12,15 @@ import {
 } from "@/components/ui/navigation-menu";
 import React from "react";
 import Image from "next/image";
+import {DashboardIcon, EnvelopeClosedIcon, EnvelopeOpenIcon, PaperPlaneIcon} from "@radix-ui/react-icons";
+import {DatabaseIcon} from "lucide-react";
+import {usePathname} from "next/navigation";
 
 export function MainNav({
                             className,
                             ...props
                         }: React.HTMLAttributes<HTMLElement>) {
+    const pathname = usePathname()
     return (
         <nav
             className={cn("flex items-center space-x-16", className)}
@@ -29,23 +33,34 @@ export function MainNav({
                 alt="Authentication"
                 className="block w-[100px] h-[30px]"
             />
-            <div className={"flex space-x-6 items-center"}>
+            <div className={"flex space-x-8 items-center"}>
                 <Link
                     href="/dashboard"
-                    className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
+                    className={"flex-icon text-sm font-medium text-muted-foreground transition-colors hover:text-primary"}>
+                    <DashboardIcon/>
                     Dashboard
                 </Link>
 
+
                 <NavigationMenuDemo/>
+
                 <Link
-                    href="/dashboard/events"
-                    className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
-                    Events
+                    href="/dashboard/surat-masuk"
+                    className="flex-icon text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
+                    <EnvelopeOpenIcon/>
+                    Surat Masuk
                 </Link>
                 <Link
-                    href="/dashboard/website"
-                    className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
-                    Website
+                    href="/dashboard/surat-keluar"
+                    className="flex-icon text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
+                    <EnvelopeClosedIcon/>
+                    Surat Keluar
+                </Link>
+                <Link
+                    href="/dashboard/disposisi"
+                    className="flex-icon text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
+                    <PaperPlaneIcon/>
+                    Disposisi
                 </Link>
             </div>
 
@@ -87,12 +102,15 @@ export function NavigationMenuDemo() {
         <NavigationMenu>
             <NavigationMenuList>
                 <NavigationMenuItem>
-                    <NavigationMenuTrigger className={"bg-black text-white"}>Master Data</NavigationMenuTrigger>
+                    <NavigationMenuTrigger className={"bg-black text-white flex-icon"}>
+                        <DatabaseIcon className={"w-4 h-4"}/>
+                        Master Data
+                    </NavigationMenuTrigger>
                     <NavigationMenuContent>
                         <ul className="grid gap-3 p-4 w-[200px]">
-                            <ListItem href="/docs" title="Staff"/>
-                            <ListItem href="/docs/installation" title="School"/>
-                            <ListItem href="/docs/primitives/typography" title="Country"/>
+                            <ListItem href="/docs" title="User"/>
+                            <ListItem href="/docs/installation" title="Departemen"/>
+                            {/*<ListItem href="/docs/primitives/typography" title="Country"/>*/}
                         </ul>
                     </NavigationMenuContent>
                 </NavigationMenuItem>
