@@ -49,19 +49,19 @@ export function MainNav({
                 <NavigationMenuDemo/>
 
                 <Link
-                    href="/dashboard/surat-masuk"
+                    href="/surat-masuk"
                     className={cn(styles.linkStyle, `${pathname === "/dashboard/surat-masuk" ? "active" : ""}`)}>
                     <EnvelopeOpenIcon/>
                     Surat Masuk
                 </Link>
                 <Link
-                    href="/dashboard/surat-keluar"
+                    href="/surat-keluar"
                     className={cn(styles.linkStyle, `${pathname === "/dashboard/surat-keluar" ? "active" : ""}`)}>
                     <EnvelopeClosedIcon/>
                     Surat Keluar
                 </Link>
                 <Link
-                    href="/dashboard/disposisi"
+                    href="/disposisi"
                     className={cn(styles.linkStyle, `${pathname === "/dashboard/disposisi" ? "active" : ""}`)}>
                     <PaperPlaneIcon/>
                     Disposisi
