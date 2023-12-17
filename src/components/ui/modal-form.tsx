@@ -1,6 +1,7 @@
 import {Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger} from "@/components/ui/sheet";
 import {Button} from "@/components/ui/button";
 import {cva} from "class-variance-authority";
+import {ScrollArea} from "@/components/ui/scroll-area";
 
 type ModalFormT = {
     title: string,
@@ -44,7 +45,9 @@ export default function ModalForm({
                     {description}
                 </SheetDescription>
             </SheetHeader>
-            {FormComponent}
+            <ScrollArea className={"h-screen pb-32"}>
+                {FormComponent}
+            </ScrollArea>
         </SheetContent>
     </Sheet>
 }

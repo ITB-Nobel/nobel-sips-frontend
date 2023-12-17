@@ -3,8 +3,8 @@ import Link from "next/link"
 
 import {cn} from "@/lib/utils"
 import {buttonVariants} from "@/components/ui/button";
-import AuthLeftLayout from "@/app/auth/components/left-layout";
-import {LoginForm} from "@/app/auth/login/login-form";
+import AuthLeftLayout from "@/app/(auth)/components/left-layout";
+import {LoginForm} from "@/app/(auth)/login/login-form";
 
 export const metadata: Metadata = {
     title: "Authentication",
