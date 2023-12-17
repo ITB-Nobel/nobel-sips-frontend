@@ -18,7 +18,7 @@ export interface IBaseTableProps<TData> {
     data: TData[]
 }
 
-export default function useBaseTable<TData, TValue>({data, columns}: IBaseTableProps<TData>) {
+export default function useBaseTable<TData>({data, columns}: IBaseTableProps<TData>) {
     const [rowSelection, setRowSelection] = React.useState({})
     const [columnVisibility, setColumnVisibility] =
         React.useState<VisibilityState>({})

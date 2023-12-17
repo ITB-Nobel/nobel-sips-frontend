@@ -31,8 +31,8 @@ export function BaseTableViewOptions<TData>({
                     <MixerHorizontalIcon className="mr-2 h-4 w-4"/>
                 </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-[150px]">
-                <DropdownMenuLabel>Toggle columns</DropdownMenuLabel>
+            <DropdownMenuContent align="end" className="w-[200px]">
+                <DropdownMenuLabel>Views Column</DropdownMenuLabel>
                 <DropdownMenuSeparator/>
                 {table
                     .getAllColumns()
@@ -41,6 +41,7 @@ export function BaseTableViewOptions<TData>({
                             typeof column.accessorFn !== "undefined" && column.getCanHide()
                     )
                     .map((column) => {
+
                         return (
                             <DropdownMenuCheckboxItem
                                 key={column.id}

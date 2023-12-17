@@ -89,3 +89,7 @@ W
 'src/components/ui/forms/form-select.tsx,7/0/703e9d2ae80cda21afa8354715ffb2e0941de234
 L
 src/components/ui/select.tsx,d/5/d5ffb6ee929e1cdbd7f663707701a3558d521d95
+V
+&src/components/ui/table/base-table.tsx,b/3/b33f3625de1df22dd1ac049530d4fb88f211c7ce
+c
+3src/components/ui/table/base-table-view-options.tsx,4/e/4e1897fed0963a28e52b0059168e6a0f4d95a5f0

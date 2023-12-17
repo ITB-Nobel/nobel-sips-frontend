@@ -43,18 +43,18 @@ const columns: ColumnDef<SuratKeluarEntity>[] = [
         enableHiding: false,
     },
     {
-        accessorKey: "id",
+        accessorKey: "nomor_surat",
         header: ({column}) => (
-            <BaseTableColumnHeader column={column} title="Task"/>
+            <BaseTableColumnHeader column={column} title="Nomor Surat"/>
         ),
         cell: ({row}) => <div className="w-[80px]">{row.getValue("id")}</div>,
         enableSorting: false,
         enableHiding: false,
     },
     {
-        accessorKey: "title",
+        accessorKey: "kepada yth",
         header: ({column}) => (
-            <BaseTableColumnHeader column={column} title="Title"/>
+            <BaseTableColumnHeader column={column} title="Kepada"/>
         ),
         cell: ({row}) => {
             const label = labels.find((label) => label.value === row.original.dari)
@@ -70,61 +70,46 @@ const columns: ColumnDef<SuratKeluarEntity>[] = [
         },
     },
     {
-        accessorKey: "status",
+        accessorKey: "dari",
         header: ({column}) => (
-            <BaseTableColumnHeader column={column} title="Status"/>
+            <BaseTableColumnHeader column={column} title="Dari"/>
         ),
         cell: ({row}) => {
-            const status = statuses.find(
-                (status) => status.value === row.getValue("status")
-            )
-
-            if (!status) {
-                return null
-            }
+            const label = labels.find((label) => label.value === row.original.dari)
 
             return (
-                <div className="flex w-[100px] items-center">
-                    {status.icon && (
-                        <status.icon className="mr-2 h-4 w-4 text-muted-foreground"/>
-                    )}
-                    <span>{status.label}</span>
+                <div className="flex space-x-2">
+                    {label && <Badge variant="outline">{label.label}</Badge>}
+                    <span className="max-w-[500px] truncate font-medium">
+            {row.getValue("title")}
+          </span>
                 </div>
             )
-        },
-        filterFn: (row, id, value) => {
-            return value.includes(row.getValue(id))
         },
     },
     {
-        accessorKey: "priority",
+        accessorKey: "Tanggal Surat Dibuat",
         header: ({column}) => (
-            <BaseTableColumnHeader column={column} title="Priority"/>
+            <BaseTableColumnHeader column={column} title="Tanggal Surat Dibuat"/>
         ),
         cell: ({row}) => {
-            const priority = priorities.find(
-                (priority) => priority.value === row.getValue("priority")
-            )
-
-            if (!priority) {
-                return null
-            }
+            const label = labels.find((label) => label.value === row.original.dari)
 
             return (
-                <div className="flex items-center">
-                    {priority.icon && (
-                        <priority.icon className="mr-2 h-4 w-4 text-muted-foreground"/>
-                    )}
-                    <span>{priority.label}</span>
+                <div className="flex space-x-2">
+                    {label && <Badge variant="outline">{label.label}</Badge>}
+                    <span className="max-w-[500px] truncate font-medium">
+            {row.getValue("title")}
+          </span>
                 </div>
             )
-        },
-        filterFn: (row, id, value) => {
-            return value.includes(row.getValue(id))
         },
     },
     {
         id: "actions",
+        header: ({column}) => (
+            <BaseTableColumnHeader column={column} title="Actions"/>
+        ),
         cell: ({row}) => <BaseTableRowActions row={row}/>,
     },
 ]
@@ -138,26 +123,26 @@ export function SuratKeluarTable({data}: Pick<IBaseTableProps<SuratKeluarEntity>
                 FilterComponent={<>
                     <Input
                         placeholder="Search..."
-                        value={(table.getColumn("title")?.getFilterValue() as string) ?? ""}
+                        value={(table.getColumn("nomor_surat")?.getFilterValue() as string) ?? ""}
                         onChange={(event) =>
-                            table.getColumn("title")?.setFilterValue(event.target.value)
+                            table.getColumn("nomor_surat")?.setFilterValue(event.target.value)
                         }
                         className="h-8 w-[150px] lg:w-[250px]"
                     />
-                    {table.getColumn("status") && (
-                        <BaseTableFacetedFilter
-                            column={table.getColumn("status")}
-                            title="Status"
-                            options={statuses}
-                        />
-                    )}
-                    {table.getColumn("priority") && (
-                        <BaseTableFacetedFilter
-                            column={table.getColumn("priority")}
-                            title="Priority"
-                            options={priorities}
-                        />
-                    )}
+                    {/*{table.getColumn("nomor_surat") && (*/}
+                    {/*    <BaseTableFacetedFilter*/}
+                    {/*        column={table.getColumn("nomor_surat")}*/}
+                    {/*        title="Nomor Surat"*/}
+                    {/*        options={statuses}*/}
+                    {/*    />*/}
+                    {/*)}*/}
+                    {/*{table.getColumn("priority") && (*/}
+                    {/*    <BaseTableFacetedFilter*/}
+                    {/*        column={table.getColumn("priority")}*/}
+                    {/*        title="Priority"*/}
+                    {/*        options={priorities}*/}
+                    {/*    />*/}
+                    {/*)}*/}
                 </>}
                 ActionComponent={
                     <ModalForm
