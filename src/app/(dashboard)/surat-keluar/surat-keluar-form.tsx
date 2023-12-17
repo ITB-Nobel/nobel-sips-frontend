@@ -10,6 +10,7 @@ import {postAction} from "@/lib/action";
 import {Form} from "@/components/ui/form";
 import FormDate from "@/components/ui/forms/form-date";
 import FormTextarea from "@/components/ui/forms/form-textarea";
+import FormSelect from "@/components/ui/forms/form-select";
 
 
 export default function SuratKeluarForm() {
@@ -59,6 +60,24 @@ export default function SuratKeluarForm() {
                     control={form.control}
                 />
 
+                <FormSelect
+                    label={"Sifat"}
+                    name={"sifat"}
+                    control={form.control}
+                    items={[
+                        {label: "Test", value: 'test'}
+                    ]}
+                />
+
+                <FormSelect
+                    label={"Urgensi"}
+                    name={"urgensi"}
+                    control={form.control}
+                    items={[
+                        {label: "Test", value: 'test'}
+                    ]}
+                />
+
                 <FormDate
                     label={"Tanggal Surat Dibuat"}
                     name={"tanggal_surat_dibuat"}
@@ -89,34 +108,6 @@ export default function SuratKeluarForm() {
                     {/*/>*/}
                 </div>
 
-                {/*<Dropzone*/}
-                {/*    options={{*/}
-                {/*        url: ``,*/}
-                {/*        acceptedFiles:*/}
-                {/*            "text/csv,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",*/}
-                {/*        maxFilesize: 2,*/}
-                {/*        maxFiles: 1,*/}
-                {/*        headers: {*/}
-                {/*            // Authorization: `Bearer ${user?.token}`,*/}
-                {/*        },*/}
-                {/*        addRemoveLinks: true,*/}
-                {/*        success: (file) => {*/}
-                {/*        },*/}
-                {/*        removedfile: (file) => {*/}
-                {/*            file.previewElement.remove();*/}
-                {/*        },*/}
-                {/*    }}*/}
-                {/*    className="dropzone"*/}
-                {/*>*/}
-                {/*    <div className="text-md font-medium">Upload File</div>*/}
-                {/*    <div className="text-gray-600">Maximal 2 Mb</div>*/}
-                {/*</Dropzone>*/}
-
-                {/*<FormDropzone*/}
-                {/*    label={"Attactment"}*/}
-                {/*    name={"attactment"}*/}
-                {/*    control={form.control}*/}
-                {/*    />*/}
             </div>
             <SheetFooter>
                 <SheetClose asChild>
