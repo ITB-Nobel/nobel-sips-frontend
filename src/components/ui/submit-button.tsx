@@ -5,7 +5,7 @@ import {Button} from "@/components/ui/button";
 import {useFormStatus} from 'react-dom'
 
 export default function SubmitButton({loading}:{loading:boolean}) {
-    return <Button variant={"default"} disabled={loading} type={"submit"} className={"w-full"}>
+    return <Button variant={"default"} disabled={loading} type={"submit"} size={"sm"} className={"w-full"}>
         {loading ? "Loading..." : "Submit"}
     </Button>
 }

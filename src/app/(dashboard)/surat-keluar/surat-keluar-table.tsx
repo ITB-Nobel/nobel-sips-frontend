@@ -150,7 +150,7 @@ export function SuratKeluarTable({data}: Pick<IBaseTableProps<SuratKeluarEntity>
                         description={"Halaman untuk membuat surat keluar"}
                         buttonText={"Create"}
                         FormComponent={<SuratKeluarForm/>}
-                        modalSize={"3xl"}
+                        modalSize={"5xl"}
                     />}
             />
             <BaseTable table={table}/>

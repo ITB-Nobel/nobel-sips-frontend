@@ -7,7 +7,7 @@
 }
 
 .active{
-    @apply text-primary
+    @apply text-red-500
 }
 
 body{

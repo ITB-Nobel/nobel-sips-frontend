@@ -11,6 +11,8 @@ import {Form} from "@/components/ui/form";
 import FormDate from "@/components/ui/forms/form-date";
 import FormTextarea from "@/components/ui/forms/form-textarea";
 import FormSelect from "@/components/ui/forms/form-select";
+import FormTinymce from "@/components/ui/forms/form-tinymce";
+import {Button} from "@/components/ui/button";
 
 
 export default function SuratKeluarForm() {
@@ -29,90 +31,99 @@ export default function SuratKeluarForm() {
 
     return <Form {...form}>
         <form onSubmit={form.handleSubmit(handleSubmit)}>
-            <div className="grid grid-cols-2 gap-x-2 gap-y-1 py-4">
-                <FormInput
-                    label={"Kepada"}
-                    name={"kepada"}
-                    control={form.control}
-                />
+            <div className={"flex gap-4 my-6"}>
+                <div className="flex-1 grid grid-cols-2 gap-x-2 gap-y-1 py-4">
+                    <FormInput
+                        label={"Kepada"}
+                        name={"kepada"}
+                        control={form.control}
+                    />
 
-                <FormInput
-                    label={"Dari"}
-                    name={"dari"}
-                    control={form.control}
-                />
+                    <FormInput
+                        label={"Dari"}
+                        name={"dari"}
+                        control={form.control}
+                    />
 
-                <FormInput
-                    label={"Perihal"}
-                    name={"perihal"}
-                    control={form.control}
-                />
+                    <FormInput
+                        label={"Perihal"}
+                        name={"perihal"}
+                        control={form.control}
+                    />
 
-                <FormInput
-                    label={"Tembusan"}
-                    name={"tembusan"}
-                    control={form.control}
-                />
+                    <FormInput
+                        label={"Tembusan"}
+                        name={"tembusan"}
+                        control={form.control}
+                    />
 
-                <FormInput
-                    label={"Lampiran"}
-                    name={"lampiran"}
-                    control={form.control}
-                />
+                    <FormInput
+                        label={"Lampiran"}
+                        name={"lampiran"}
+                        control={form.control}
+                    />
 
-                <FormSelect
-                    label={"Sifat"}
-                    name={"sifat"}
-                    control={form.control}
-                    items={[
-                        {label: "Test", value: 'test'}
-                    ]}
-                />
+                    <FormSelect
+                        label={"Sifat"}
+                        name={"sifat"}
+                        control={form.control}
+                        items={[
+                            {label: "Test", value: 'test'}
+                        ]}
+                    />
 
-                <FormSelect
-                    label={"Urgensi"}
-                    name={"urgensi"}
-                    control={form.control}
-                    items={[
-                        {label: "Test", value: 'test'}
-                    ]}
-                />
+                    <FormSelect
+                        label={"Urgensi"}
+                        name={"urgensi"}
+                        control={form.control}
+                        items={[
+                            {label: "Test", value: 'test'}
+                        ]}
+                    />
 
-                <FormDate
-                    label={"Tanggal Surat Dibuat"}
-                    name={"tanggal_surat_dibuat"}
-                    control={form.control}
-                />
+                    <FormDate
+                        label={"Tanggal Surat Dibuat"}
+                        name={"tanggal_surat_dibuat"}
+                        control={form.control}
+                    />
 
-                <div className={"col-span-2"}>
+
                     <FormTextarea
                         label={"Komentar"}
                         name={"komentar"}
                         control={form.control}
                     />
-                </div>
 
-                <div className={"col-span-2"}>
+
                     <FormTextarea
                         label={"Referensi"}
                         name={"referensi"}
                         control={form.control}
                     />
-                </div>
 
-                <div className={"col-span-2"}>
-                    {/*<FormTinymce*/}
-                    {/*    label={"Isi Surat"}*/}
-                    {/*    name={"isi_surat"}*/}
-                    {/*    control={form.control}*/}
-                    {/*/>*/}
-                </div>
 
+                    <div className={"col-span-2"}>
+                        {/*<FormTinymce*/}
+                        {/*    label={"Isi Surat"}*/}
+                        {/*    name={"isi_surat"}*/}
+                        {/*    control={form.control}*/}
+                        {/*/>*/}
+                    </div>
+
+                </div>
+                <div className={"flex-1"}>
+                    <FormTinymce
+                        label={"Isi Surat"}
+                        name={"isi_surat"}
+                        control={form.control}
+                    />
+                </div>
             </div>
-            <SheetFooter>
-                <SheetClose asChild>
-                    <SubmitButton loading={loading}/>
+            <SheetFooter className={"flex float-right"}>
+                <SheetClose asChild >
+                    <Button variant={"outline"} size={'sm'}>Cancel</Button>
                 </SheetClose>
+                <SubmitButton loading={loading}/>
             </SheetFooter>
         </form>
     </Form>
