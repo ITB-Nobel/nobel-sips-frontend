@@ -113,3 +113,7 @@ H
 src/lib/general-type.tsx,c/5/c55f6d974eb773dc701e4ecbb1eb4850207a8f70
 W
 'src/components/ui/forms/form-search.tsx,3/8/388be3db3bdff293f20f100d2127c0a412494db2
+X
+(src/components/shared/error-template.tsx,6/8/687110163f444dacfaa90eee70bfd0978738f874
+]
+-src/components/ui/skeleton/skeleton-table.tsx,7/2/725cc981350eb80817b8beb3b0194d808337604f

@@ -1,3 +1,6 @@
+import {Simulate} from "react-dom/test-utils";
+
+
 type RequestApi = {
     url: string,
     payload: any,
@@ -5,7 +8,7 @@ type RequestApi = {
 }
 
 export type PaginateResponse<T> = {
-    data : T,
+    data: T,
     meta: MetaType,
     links: LinksType
 }
@@ -18,27 +21,28 @@ export type LinksType = {
 }
 
 export type MetaType = {
-    current_page:number,
-    from:number,
-    to:number,
-    total:number,
-    last_page:number,
+    current_page: number,
+    from: number,
+    to: number,
+    total: number,
+    last_page: number,
     per_page: number
 }
 export const BASE_URL = process.env.API_URL;
 
 export async function apiFetch<T>({url, filter}: Omit<RequestApi, 'payload'>): Promise<T> {
     const params = new URLSearchParams
-    if(filter){
-        Object.entries(filter).forEach(([key,value]) => {
-            if(value) params.append(key,value?.toString())
+    if (filter) {
+        Object.entries(filter).forEach(([key, value]) => {
+            if (value) params.append(key, value?.toString())
         })
     }
+
 
     const response = await fetch(`${BASE_URL}/${url}?${params.toString()}`, {
         headers: {
             Authorization: `Bearer ${""}`,
-        },
+        }
     });
     return await response.json();
 }

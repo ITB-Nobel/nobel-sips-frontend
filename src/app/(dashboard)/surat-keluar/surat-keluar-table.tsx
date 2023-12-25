@@ -13,7 +13,6 @@ import {ColumnDef} from "@tanstack/react-table";
 import {Checkbox} from "@/components/ui/checkbox";
 import {BaseTableColumnHeader} from "@/components/ui/table/base-table-column-header";
 import {Badge} from "@/components/ui/badge";
-import {BaseTableRowActions} from "@/app/(dashboard)/table/components/columns";
 import FormSearch from "@/components/ui/forms/form-search";
 import {PaginateResponse} from "@/lib/api";
 
@@ -47,7 +46,7 @@ const columns: ColumnDef<SuratKeluarEntity>[] = [
         header: ({column}) => (
             <BaseTableColumnHeader column={column} title="Nomor Surat"/>
         ),
-        cell: ({row}) => <div className="w-[80px]">{row.getValue("id")}</div>,
+        cell: ({row}) => <div className="w-[80px]">{row.getValue("nomor_surat")}</div>,
         enableSorting: false,
         enableHiding: false,
     },
@@ -58,12 +57,11 @@ const columns: ColumnDef<SuratKeluarEntity>[] = [
         ),
         cell: ({row}) => {
             const label = labels.find((label) => label.value === row.original.dari)
-
             return (
                 <div className="flex space-x-2">
                     {label && <Badge variant="outline">{label.label}</Badge>}
                     <span className="max-w-[500px] truncate font-medium">
-            {row.getValue("title")}
+            {row.getValue("pengirim")}
           </span>
                 </div>
             )
@@ -81,7 +79,7 @@ const columns: ColumnDef<SuratKeluarEntity>[] = [
                 <div className="flex space-x-2">
                     {label && <Badge variant="outline">{label.label}</Badge>}
                     <span className="max-w-[500px] truncate font-medium">
-            {row.getValue("title")}
+            {row.getValue("dari")}
           </span>
                 </div>
             )
@@ -105,16 +103,16 @@ const columns: ColumnDef<SuratKeluarEntity>[] = [
             )
         },
     },
-    {
-        id: "actions",
-        header: ({column}) => (
-            <BaseTableColumnHeader column={column} title="Actions"/>
-        ),
-        cell: ({row}) => <BaseTableRowActions row={row}/>,
-    },
+    // {
+    //     id: "actions",
+    //     header: ({column}) => (
+    //         <BaseTableColumnHeader column={column} title="Actions"/>
+    //     ),
+    //     cell: ({row}) => <BaseTableRowActions row={row}/>,
+    // },
 ]
 
-export function SuratKeluarTable({response: {data, meta, links}}: { response: PaginateResponse<SuratKeluarEntity[]> }) {
+export function SuratKeluarTable({response: {data, meta}}: { response: PaginateResponse<SuratKeluarEntity[]> }) {
     const {table} = useBaseTable({data, columns})
     return (
         <div className="space-y-4">
@@ -146,7 +144,7 @@ export function SuratKeluarTable({response: {data, meta, links}}: { response: Pa
                         modalSize={"5xl"}
                     />}
             />
-            <BaseTable table={table}/>
+            <BaseTable table={table} data={data}/>
             <BaseTablePagination table={table} meta={meta}/>
         </div>
     )
