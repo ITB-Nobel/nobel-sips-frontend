@@ -1,4 +1,4 @@
-import {columns} from "./components/columns"
+// import {columns} from "./components/columns"
 import {DataTable} from "./components/data-table"
 
 
@@ -46,7 +46,7 @@ export default async function TaskPage() {
                         {/*<UserNav/>*/}
                     </div>
                 </div>
-                <DataTable data={tasks} columns={columns}/>
+                <DataTable data={tasks} columns={[]}/>
             </div>
         </>
     )

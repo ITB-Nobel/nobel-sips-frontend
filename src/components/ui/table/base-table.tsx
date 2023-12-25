@@ -1,8 +1,10 @@
+'use client'
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table";
 import {flexRender, Table as TanstakTable} from "@tanstack/react-table";
 import * as React from "react";
 
-export default function BaseTable<T>({table}: { table: TanstakTable<T> }) {
+export default function BaseTable<T>({table, data}: { table: TanstakTable<T>, data:T[] }) {
+
     return <div className="rounded-md border">
         <Table>
             <TableHeader>
@@ -42,12 +44,12 @@ export default function BaseTable<T>({table}: { table: TanstakTable<T> }) {
                     ))
                 ) : (
                     <TableRow>
-                        {/*<TableCell*/}
-                        {/*    colSpan={columns.length}*/}
-                        {/*    className="h-24 text-center"*/}
-                        {/*>*/}
-                        {/*    No results.*/}
-                        {/*</TableCell>*/}
+                        <TableCell
+                            colSpan={99}
+                            className="h-24 text-center"
+                        >
+                            Data Kosong
+                        </TableCell>
                     </TableRow>
                 )}
             </TableBody>

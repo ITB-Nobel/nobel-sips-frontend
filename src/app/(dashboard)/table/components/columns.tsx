@@ -141,9 +141,7 @@ export function BaseTableRowActions<TData>({
                                                row,
                                            }: DataTableRowActionsProps<TData>) {
     const task = taskSchema.parse(row.original)
-
     return (
-        // eslint-disable-next-line react/jsx-no-undef
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
                 <Button

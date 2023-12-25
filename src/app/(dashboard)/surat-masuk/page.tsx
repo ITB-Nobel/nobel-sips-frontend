@@ -1,14 +1,22 @@
 import {SuratMasukTable} from "@/app/(dashboard)/surat-masuk/surat-masuk-table";
-import {columns} from "@/app/(dashboard)/table/components/columns";
+import {apiFetch, PaginateResponse} from "@/lib/api";
+import SuratMasukEntity from "@/entities/surat-masuk.entity";
+import {PageParamsQuery} from "@/lib/general-type";
+import {Suspense} from "react";
 
-export default function EventPage() {
-
+export default async function EventPage({searchParams}: PageParamsQuery) {
+    const response = await apiFetch<PaginateResponse<SuratMasukEntity[]>>({
+        url: 'surat-masuk',
+        filter: {
+            page: searchParams?.page,
+            limit: searchParams?.limit,
+            search: searchParams?.search
+        }
+    })
     return <div>
         <h1 className={"mb-6 text-3xl font-bold"}>Surat Masuk</h1>
-        <SuratMasukTable
-            columns={columns}
-            data={[]}
-        />
-
+        <Suspense fallback={<div>Loading...</div>}>
+            <SuratMasukTable response={response}/>
+        </Suspense>
     </div>
 }

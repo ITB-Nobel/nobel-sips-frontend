@@ -14,7 +14,7 @@ interface DataTableToolbarProps<TData> {
     ActionComponent?: React.ReactNode
 }
 
-export function BaseTableToolbar<TData>({
+export default function BaseTableToolbar<TData>({
                                             table,
                                             FilterComponent,
                                             ActionComponent

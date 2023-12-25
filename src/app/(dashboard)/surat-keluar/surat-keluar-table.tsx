@@ -3,11 +3,10 @@
 import * as React from "react"
 import BaseTable from "@/components/ui/table/base-table";
 import {BaseTablePagination} from "@/components/ui/table/base-table-pagination";
-import {BaseTableFacetedFilter} from "@/components/ui/table/base-table-faceted-filter";
-import {labels, priorities, statuses} from "@/app/(dashboard)/table/data/data";
-import {BaseTableToolbar} from "@/components/ui/table/base-table-toolbar";
+import {labels} from "@/app/(dashboard)/table/data/data";
+import BaseTableToolbar from "@/components/ui/table/base-table-toolbar";
 import ModalForm from "@/components/ui/modal-form";
-import useBaseTable, {IBaseTableProps} from "@/hooks/base-table-hooks";
+import useBaseTable from "@/hooks/base-table-hooks";
 import SuratKeluarEntity from "@/entities/surat-keluar.entity";
 import SuratKeluarForm from "@/app/(dashboard)/surat-keluar/surat-keluar-form";
 import {ColumnDef} from "@tanstack/react-table";
@@ -15,7 +14,8 @@ import {Checkbox} from "@/components/ui/checkbox";
 import {BaseTableColumnHeader} from "@/components/ui/table/base-table-column-header";
 import {Badge} from "@/components/ui/badge";
 import {BaseTableRowActions} from "@/app/(dashboard)/table/components/columns";
-import {Input} from "@/components/ui/input";
+import FormSearch from "@/components/ui/forms/form-search";
+import {PaginateResponse} from "@/lib/api";
 
 const columns: ColumnDef<SuratKeluarEntity>[] = [
     {
@@ -114,21 +114,14 @@ const columns: ColumnDef<SuratKeluarEntity>[] = [
     },
 ]
 
-export function SuratKeluarTable({data}: Pick<IBaseTableProps<SuratKeluarEntity>, 'data'>) {
+export function SuratKeluarTable({response: {data, meta, links}}: { response: PaginateResponse<SuratKeluarEntity[]> }) {
     const {table} = useBaseTable({data, columns})
     return (
         <div className="space-y-4">
             <BaseTableToolbar
                 table={table}
                 FilterComponent={<>
-                    <Input
-                        placeholder="Search..."
-                        value={(table.getColumn("nomor_surat")?.getFilterValue() as string) ?? ""}
-                        onChange={(event) =>
-                            table.getColumn("nomor_surat")?.setFilterValue(event.target.value)
-                        }
-                        className="h-8 w-[150px] lg:w-[250px]"
-                    />
+                    <FormSearch/>
                     {/*{table.getColumn("nomor_surat") && (*/}
                     {/*    <BaseTableFacetedFilter*/}
                     {/*        column={table.getColumn("nomor_surat")}*/}
@@ -154,7 +147,7 @@ export function SuratKeluarTable({data}: Pick<IBaseTableProps<SuratKeluarEntity>
                     />}
             />
             <BaseTable table={table}/>
-            <BaseTablePagination table={table}/>
+            <BaseTablePagination table={table} meta={meta}/>
         </div>
     )
 }
