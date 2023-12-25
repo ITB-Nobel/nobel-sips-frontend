@@ -18,7 +18,7 @@ export default async function EventPage({searchParams}: PageParamsQuery) {
     console.log(response, 'response surat keluar')
     return <div>
         <h1 className={"mb-6 text-3xl font-bold"}>Surat Keluar</h1>
-        <Suspense fallback={<SkeletonTable repeat={2}/>}>
+        <Suspense fallback={<SkeletonTable repeat={4}/>}>
             <SuratKeluarTable response={response}/>
         </Suspense>
     </div>
