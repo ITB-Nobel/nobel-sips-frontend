@@ -113,3 +113,11 @@ X
 (src/components/shared/error-template.tsx,6/8/687110163f444dacfaa90eee70bfd0978738f874
 ]
 -src/components/ui/skeleton/skeleton-table.tsx,7/2/725cc981350eb80817b8beb3b0194d808337604f
+T
+$src/app/(dashboard)/setting/page.tsx,d/4/d43ee486e60dcff33d461195e06f40ce2dede693
+W
+'src/app/(auth)/forgot-password/page.tsx,7/e/7e97bcabe0d2061a164462750381421260f2db1f
+@
+src/app/page.tsx,3/3/3393394e21dbac7686e91ad17c5283fb052d67f3
+K
+src/components/ui/table.tsx,d/e/ded2d8d03b6f1c952133cb7ece8b4ee559a4bada
